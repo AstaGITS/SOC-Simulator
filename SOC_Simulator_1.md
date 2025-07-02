@@ -59,4 +59,4 @@ Les attaquants ont donc exploité la vulnérabilité ProxyShell le `2022-07-04 �
 
 `Flag : FCSC{ProxyShell|2022-07-04T15:36}`
 
-Rédigé par `Arthur Calvez - Imineti By Niji`
+Rédigé par `Asta - Imineti By Niji`
