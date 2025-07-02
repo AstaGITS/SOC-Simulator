@@ -35,15 +35,15 @@ Dans un second temps, les événements extraits ont été triés par date, en se
 Pour la phase d’exploration, on utilise TimelineExplorer, un outil développé par Eric Zimmerman. Cet utilitaire permet de charger des fichiers CSV ou Excel, et de manipuler les données à travers des filtres dynamiques appliqués aux colonnes.
 On concentre alors notre attention sur les événements identifiés comme critiques. Toutefois, il convient de noter que la détection de ces événements repose sur l’ensemble de règles SIGMA utilisé. Voici un exemple de résultats proposé par l'outil Hayabusa concernant les événèments du 2022-07-04 : 
 
-![Résultat proposé par Hayabusa](output_Hayabusa.png)
+![Résultat proposé par Hayabusa](./images/output_Hayabusa.png)
 
 L’analyse préliminaire fait ressortir plusieurs alertes critiques particulièrement dignes d’intérêt. On procède à présent à une revue détaillée des événements critiques à l’aide de TimelineExplorer. Ci-dessous les évènements critiques du 04/07 :  
 
-![Timeline Explorer évènements critiques](TimelineExplorer_évènements_critiques.png)
+![Timeline Explorer évènements critiques](./images/TimelineExplorer_évènements_critiques.png)
 
 Les alertes critiques identifiées pour les journées du 5 et 6 juillet 2022 présentent des similarités marquées, tant en termes de contenu que de timestamp, ce qui suggère fortement qu’elles ont été générées par un mécanisme automatisé, tel qu’un agent de sécurité ou un processus de surveillance centralisé.
 
-![Timeline Explorer évènements critiques 2](Timeline_Explorer_évènements_critiques_2.png)
+![Timeline Explorer évènements critiques 2](./images/Timeline_Explorer_évènements_critiques_2.png)
 
 On porte donc attention à la mention de la `CVE-2021-31207`, référencée dans ces événements. On va ainsi approfondir notre investigation afin de comprendre le rôle éventuel de cette vulnérabilité dans l’activité observée, et déterminer si une exploitation effective a pu avoir lieu. Une recherche rapide sur la `CVE-2021-31207` mène à un [article technique](https://cloud.google.com/blog/topics/threat-intelligence/pst-want-shell-proxyshell-exploiting-microsoft-exchange-servers?hl=en) décrivant son exploitation. 
 
@@ -53,7 +53,7 @@ Voici la payload générique connue :
 
 En croisant les informations, on retrouve exactement la même payload dans les détails des évènements critiques du 04/07 (présenté plus haut) que celle présentée dans l’article. Cela confirme qu’un exploit connu de cette vulnérabilité a bien été utilisé sur la machine.
 
-![Payload identifié](Payload_identifié.png)
+![Payload identifié](./images/Payload_identifié.png)
 
 Les attaquants ont donc exploité la vulnérabilité ProxyShell le `2022-07-04 à 15:36:43`.
 
